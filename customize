@@ -43,6 +43,8 @@ useradd -m -s /usr/bin/false -u 201 -g varnish varnish
 # passwd -N varnish
 # passwd -d varnish
 
+svccfg import /opt/local/lib/svc/method/varnish.xml
+
 # Clean up
 echo "* Cleaning up."
 rm -rf /opt/qutic/src
