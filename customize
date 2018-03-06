@@ -6,7 +6,6 @@ PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 set -o errexit
 
 VARNISH_VERSION="5.2.1"
-DESTDIR="/var/www/htdocs/nextcloud"
 
 MUNIN_PLUGINS="
 	varnish_request_rate
@@ -28,14 +27,13 @@ echo "* Activate munin plugins"
 echo "* Build varnish"
 mkdir /opt/qutic/src
 cd /opt/qutic/src
-curl -L -O https://download.qutic.com/src/varnish/varnish-${VARNISH_VERSION}.tgz
+curl -s -L -O https://download.qutic.com/src/varnish/varnish-${VARNISH_VERSION}.tgz
 tar xf varnish-${VARNISH_VERSION}.tgz
 cd varnish-${VARNISH_VERSION}
 ./configure --prefix=/opt/local
 gmake
 gmake install
 touch /opt/local/etc/varnish.vcl
-cd ..
 
 echo "* Create varnish guid and uid"
 groupadd -g 201 varnish
@@ -47,6 +45,7 @@ svccfg import /opt/local/lib/svc/method/varnish.xml
 
 # Clean up
 echo "* Cleaning up."
+cd /root
 rm -rf /opt/qutic/src
 rm /root/customize
 
