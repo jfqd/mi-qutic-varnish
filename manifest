@@ -1,4 +1,4 @@
-name="qutic-mail"
+name="qutic-varnish"
 organization="qutic development"
 brand="varnish instance"
 version="17.4.0"
