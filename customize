@@ -1,0 +1,43 @@
+#!/usr/bin/bash
+
+PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
+
+# Exit if any commands fail
+set -o errexit
+
+VARNISH_VERSION="5.2.1"
+DESTDIR="/var/www/htdocs/nextcloud"
+
+MUNIN_PLUGINS="
+	varnish_request_rate
+	varnish_hit_rate
+	varnish_backend_traffic
+	varnish_objects
+	varnish_transfer_rates
+	varnish_threads
+	varnish_memory_usage
+	varnish_uptime
+	varnish_expunge
+	varnish_lru
+	varnish_bad
+"
+
+echo "* Activate munin plugins"
+/opt/qutic/bin/munin-node-plugins ${MUNIN_PLUGINS}
+
+echo "* Build varnish"
+mkdir /opt/qutic/src
+cd /opt/qutic/src
+curl -L -O https://download.qutic.com/src/varnish/varnish-${VARNISH_VERSION}.tgz
+tar xf varnish-${VARNISH_VERSION}.tgz
+cd varnish-${VARNISH_VERSION}
+./configure --prefix=/opt/local
+gmake
+gmake install
+
+# Clean up
+echo "* Cleaning up."
+rm /root/customize
+
+# Prepare image for provisioning
+sm-prepare-image -y
