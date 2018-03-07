@@ -33,7 +33,6 @@ cd varnish-${VARNISH_VERSION}
 ./configure --prefix=/opt/local
 gmake
 gmake install
-touch /opt/local/etc/varnish.vcl
 
 echo "* Create varnish guid and uid"
 groupadd -g 201 varnish
