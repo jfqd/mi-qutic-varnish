@@ -53,3 +53,5 @@ vmadm create << EOF
 }
 EOF
 ```
+
+The varnish vcl file can be testet with: `varnishd -C -f /opt/local/etc/varnish.vcl`

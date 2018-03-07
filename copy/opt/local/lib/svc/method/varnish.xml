@@ -12,7 +12,13 @@
       and methods within the instance.
     -->
     <instance name='varnish' enabled='false'>
-      <exec_method type='method' name='start' timeout_seconds='60' exec='/opt/local/lib/svc/method/varnish start' />
+
+      <exec_method type='method' name='start' timeout_seconds='60' exec='/opt/local/lib/svc/method/varnish start'>
+        <method_context>
+          <method_credential user='varnish' group='varnish' />
+        </method_context>
+      </exec_method>
+        
       <exec_method type='method' name='stop' timeout_seconds='60' exec='/opt/local/lib/svc/method/varnish stop' />
 
       <!-- sub-process core dumps shouldn't restart session -->
