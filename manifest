@@ -1,7 +1,7 @@
 name="qutic-varnish"
 organization="qutic development"
 brand="varnish instance"
-version="17.4.0"
+version="17.4.1"
 description="qutic varnish image"
 homepage="https://github.com/jfqd/mi-qutic-varnish"
 users="root admin"

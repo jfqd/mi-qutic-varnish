@@ -14,7 +14,7 @@ chown -R varnish:varnish /var/run/varnishd
 chown -R varnish:varnish /opt/local/var/varnish
 
 touch /var/log/varnish.log
-chown varnish:varnish /var/run/varnishd
+chown varnish:varnish /var/log/varnish.log
 
 # bye
 exit 0
