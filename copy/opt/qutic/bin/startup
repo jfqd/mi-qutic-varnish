@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+# sleep a while
+sleep 10
+
+# first time fetch
+if [[ ! -f /opt/local/pkg/pkg-vulnerabilities ]]; then
+  /opt/local/sbin/pkg_admin fetch-pkg-vulnerabilities
+fi
+
+mkdir -p /var/run/varnishd
+mkdir -p /opt/local/var/varnish
+chown -R varnish:varnish /var/run/varnishd
+chown -R varnish:varnish /opt/local/var/varnish
+
+touch /var/log/varnish.log
+chown varnish:varnish /var/run/varnishd
+
+# bye
+exit 0

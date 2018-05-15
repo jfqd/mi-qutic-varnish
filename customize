@@ -27,6 +27,7 @@ echo "* Activate munin plugins"
 echo "* Build varnish"
 mkdir /opt/qutic/src
 cd /opt/qutic/src
+# get it from: https://github.com/varnishcache/varnish-cache/releases
 curl -s -L -O https://download.qutic.com/src/varnish/varnish-${VARNISH_VERSION}.tgz
 tar xf varnish-${VARNISH_VERSION}.tgz
 cd varnish-${VARNISH_VERSION}
@@ -41,11 +42,15 @@ useradd -m -s /usr/bin/false -u 201 -g varnish varnish
 # passwd -d varnish
 
 svccfg import /opt/local/lib/svc/method/varnish.xml
+svccfg import /opt/local/lib/svc/method/varnish-log.xml
 
 mkdir -p /var/run/varnishd
 mkdir -p /opt/local/var/varnish
 chown -R varnish:varnish /var/run/varnishd
 chown -R varnish:varnish /opt/local/var/varnish
+
+touch /var/log/varnish.log
+chown varnish:varnish /var/run/varnishd
 
 # Clean up
 echo "* Cleaning up."

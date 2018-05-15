@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<!--
+  Copyright 2011 Stephan Pietzko http://s2p.de/Sysadmin/SolarisVarnishManifest
+  All rights reserved. Use is subject to license terms.
+-->
+<service_bundle type='manifest' name='varnish'>
+  <service name='network/http' type='service' version='1'>
+    <!--
+      Because we may have multiple instances of network/http
+      provided by different implementations, we keep dependencies
+      and methods within the instance.
+    -->
+    <instance name='varnish-log' enabled='false'>
+      <!--
+        Wait for varnish to be started.
+      -->
+      <dependency name='network' grouping='require_all' restart_on='error' type='service'>
+          <service_fmri value='svc:/network/http:varnish'/>
+      </dependency>
+      
+      <exec_method type='method' name='start' timeout_seconds='60' exec='/opt/local/lib/svc/method/varnish-log start'>
+        <method_context>
+          <method_credential user='varnish' group='varnish' />
+        </method_context>
+      </exec_method>
+
+      <exec_method type='method' name='stop'  timeout_seconds='60' exec='/opt/local/lib/svc/method/varnish-log stop' />
+
+      <!-- sub-process core dumps shouldn't restart session -->
+      <property_group name='startd' type='framework'>
+        <propval name='ignore_error' type='astring' value='core,signal' />
+      </property_group>
+    </instance>
+
+    <template>
+      <common_name>
+        <loctext xml:lang='C'>Log of Varnish 3 reverse proxy server</loctext>
+      </common_name>
+      <documentation>
+        <manpage title='varnishd' section='1' manpath='/usr/local/share/man/man1/varnishncsa.1' />
+        <doc_link name='varnish-cache.org' uri='https://www.varnish-cache.org/' />
+      </documentation>
+    </template>
+  </service>
+</service_bundle>
