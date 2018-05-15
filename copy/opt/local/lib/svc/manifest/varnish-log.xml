@@ -35,7 +35,7 @@
 
     <template>
       <common_name>
-        <loctext xml:lang='C'>Log of Varnish 3 reverse proxy server</loctext>
+        <loctext xml:lang='C'>Log of Varnish reverse proxy server</loctext>
       </common_name>
       <documentation>
         <manpage title='varnishd' section='1' manpath='/usr/local/share/man/man1/varnishncsa.1' />
