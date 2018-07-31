@@ -1,5 +1,9 @@
 # Changelog
 
+## 18.2.0
+
+* switch to pkgsrc 2018Q2
+
 ## 17.4.1
 
 * add smf for varnish-log
