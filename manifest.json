@@ -1,6 +1,6 @@
 {
   "name":         "qutic-varnish",
-  "version":      "17.4.1",
+  "version":      "18.2.0",
   "description":  "qutic varnish image",
   "organization": "qutic development",
   "brand":        "varnish instance",
