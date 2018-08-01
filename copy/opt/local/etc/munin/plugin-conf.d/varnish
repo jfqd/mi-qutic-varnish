@@ -1,0 +1,2 @@
+[varnish_*]
+  env.varnishstat /opt/local/bin/varnishstat

@@ -8,17 +8,17 @@ set -o errexit
 VARNISH_VERSION="5.2.1"
 
 MUNIN_PLUGINS="
-	varnish_request_rate
+	varnish_main_uptime
 	varnish_hit_rate
-	varnish_backend_traffic
-	varnish_objects
-	varnish_transfer_rates
-	varnish_threads
-	varnish_memory_usage
-	varnish_uptime
 	varnish_expunge
-	varnish_lru
+	varnish_threads
+	varnish_mgt_uptime
+	varnish_backend_traffic
 	varnish_bad
+	varnish_objects
+	varnish_memory_usage
+	varnish_request_rate
+	varnish_transfer_rates
 "
 
 echo "* Activate munin plugins"
