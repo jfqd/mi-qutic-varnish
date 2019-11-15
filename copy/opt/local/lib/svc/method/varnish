@@ -25,7 +25,7 @@
 
 PID="/var/run/varnishd/varnishd.pid"
 
-export PATH=/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin
+export PATH=/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin
 
 if [ -z $SMF_FMRI ]; then
     echo "Error: SMF framework variables are not initialized"

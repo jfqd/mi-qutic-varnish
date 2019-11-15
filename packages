@@ -1,6 +1,6 @@
 # List packages to add to your image one per line.
 #
-gcc49
+gcc7
 gmake
 py27-docutils
 pkg-config
