@@ -1,6 +1,6 @@
 {
   "name":         "qutic-varnish",
-  "version":      "20181018.0",
+  "version":      "20191127.0",
   "description":  "qutic varnish image",
   "organization": "qutic development",
   "brand":        "varnish instance",
@@ -22,6 +22,9 @@
     "ssh_host_dsa_key.pub":  {"type": "text", "description": "public SSH dsa key for the host daemon"},
     "munin_master_allow":    {"type": "text", "description": "ip addresses (alternative hostname) of the munin master node"},
     "nagios_allow":          {"type": "text", "description": "ip addresses of the nagios server node, seperated by comma"},
+    "zabbix_server":         {"type": "text", "description": "zabbix server hostname (alternative ip address)"},
+    "zabbix_pski":           {"type": "text", "description": "zabbix PSKIdentity"},
+    "zabbix_psk":            {"type": "text", "description": "zabbix PSK"},
     "logstash_redis":        {"type": "text", "description": "ip addresses of the logstash redis nodes, seperated by comma and including redis-protocoll"}
   }
 }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 20191127.0
+
+* use lastest base image
+* add zabbix-config
+
 ## 20181018.0
 
 * Move to pkgsrc trunk
