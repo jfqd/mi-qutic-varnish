@@ -6,3 +6,4 @@ py27-docutils
 pkg-config
 pcre
 p5-libxml
+jq
